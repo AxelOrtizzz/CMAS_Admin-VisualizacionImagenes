@@ -1,0 +1,97 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CallawayWeb.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title><%: Page.Title %> - Callaway</title>
+    <link href="~/Content/Site.css" rel="stylesheet" /> 
+    <link href="calicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <asp:PlaceHolder runat="server">        
+        <script src="<%: ResolveUrl("~/Scripts/modernizr-2.5.3.js") %>"></script>
+    </asp:PlaceHolder>
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    <style type="text/css">
+        .auto-style1 {
+            width: 138px;
+            height: 75px;
+        }
+    </style>
+</head>
+<body>
+    <form runat="server">
+    <asp:ScriptManager runat="server">
+        <Scripts>
+            <asp:ScriptReference Name="jquery" />
+            <asp:ScriptReference Name="jquery.ui.combined" />
+        </Scripts>
+    </asp:ScriptManager>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">
+                    &nbsp;
+                    <img class="auto-style1" src="Images/Callawaysmall.jpg" /></p>
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    <asp:LoginView runat="server" ViewStateMode="Disabled" Visible="False">
+                        <AnonymousTemplate>
+                            <ul>
+                                <li><a id="registerLink" runat="server" href="~/Account/Register.aspx" visible="False">Register</a></li>
+                                <li><a id="loginLink" runat="server" href="~/Account/Login.aspx">Log in</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <p>
+                                Hello, <a runat="server" class="username" href="~/Account/Manage.aspx" title="Manage your account">
+                                    <asp:LoginName runat="server" CssClass="username" />
+                                </a>!
+                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
+                            </p>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </section>
+                <nav>
+                    <ul id="menu">
+                        <li><a runat="server" href="~/">Home</a></li>
+                        <li><a runat="server" href="~/Alta.aspx">Alta de partes</a></li>
+                         <li><a id="A4" runat="server" href="~/Query1.aspx">Reporte</a></li>
+                        <li><a id="A5" runat="server" href="~/Tolerancias.aspx">Tolerancias</a></li>
+                       <li><a runat="server" href="~/Reporte.aspx">Contadores/Orden</a></li>
+                       <li><a runat="server" href="~/ImagesReport.aspx">Imagenes de Partes</a></li>
+                        <li><a runat="server" href="DataMTD.aspx">Datos MTD</a></li>
+                        <li><a id="A1" runat="server" href="SetLinea.aspx">Producción</a></li>
+                        <li><a id="A2" runat="server" href="LineasActivas.aspx">Líneas Activas</a></li>
+                        <li><a id="A3" runat="server" href="Tiempos.aspx">Tiempos de Pantallas</a></li>
+                         <li><a id="A6" runat="server" href="Entrenamiento.aspx">Entrenamiento</a></li>
+                        <li><a id="A7" runat="server" href="Compensaciones.aspx">Compensaciones</a></li>
+                        <li><a id="A8" runat="server" href="AsociadosDia.aspx">Asociados X Día</a></li>
+                        <li><a id="A9" runat="server" href="Extensiones.aspx">Extensiones</a></li>
+                        <li><a id="A10" runat="server" href="WebForm2.aspx">Capturados</a></li>
+                        <li><a id="A11" runat="server" href="KiteadasRep.aspx">Kiteadas</a></li>
+                        <li><a id="A12" runat="server" href="Productividad.aspx">Productividad</a></li>
+                        <li><a id="A13" runat="server" href="ProductividadCategorias.aspx">Productividad Familias</a></li>
+                        <li><a id="A14" runat="server" href="AltaLimitesML.aspx">Alta Límites ML</a></li>   
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+        <section class="content-wrapper main-content clear-fix">
+            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+        </section>
+    </div>
+        <footer>
+            <div class="content-wrapper">
+            <div class="float-left">
+                <p>Callaway</p>
+            </div>
+        </div>
+    </footer>
+    </form>
+</body>
+</html>

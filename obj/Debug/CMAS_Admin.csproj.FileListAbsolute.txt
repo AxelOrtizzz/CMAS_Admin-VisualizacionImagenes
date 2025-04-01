@@ -1,0 +1,135 @@
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\CallawayWeb.dll.config
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\CallawayWeb.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\CallawayWeb.pdb
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\AjaxControlToolkit.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\AspNet.ScriptManager.jQuery.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\dotnetCHARTING.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\DotNetOpenAuth.AspNet.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\DotNetOpenAuth.Core.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\DotNetOpenAuth.OAuth.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\DotNetOpenAuth.OpenId.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\EntityFramework.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\Microsoft.Web.Infrastructure.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\System.Web.Providers.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\Org.Mentalis.Security.Cryptography.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\Mono.Math.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\EntityFramework.xml
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\DotNetOpenAuth.Core.xml
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\DotNetOpenAuth.OAuth.xml
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\DotNetOpenAuth.OpenId.xml
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\DotNetOpenAuth.AspNet.xml
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\Org.Mentalis.Security.Cryptography.xml
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\bin\Mono.Math.xml
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\obj\Debug\CMAS_Admin.csproj.CoreCompileInputs.cache
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\obj\Debug\CMAS_Admin.csproj.CopyComplete
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\obj\Debug\CallawayWeb.dll
+C:\repos\TCB_Manufacturing_Assembly_System-PRJ\CMAS_Admin-RP\CMAS_Admin\obj\Debug\CallawayWeb.pdb
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\CallawayWeb.dll.config
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\CallawayWeb.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\CallawayWeb.pdb
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\AjaxControlToolkit.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\AspNet.ScriptManager.jQuery.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\dotnetCHARTING.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.AspNet.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.Core.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OAuth.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OpenId.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\EntityFramework.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\Microsoft.Web.Infrastructure.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\System.Web.Providers.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\Org.Mentalis.Security.Cryptography.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\Mono.Math.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\EntityFramework.xml
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.Core.xml
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OAuth.xml
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OpenId.xml
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.AspNet.xml
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\Org.Mentalis.Security.Cryptography.xml
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\bin\Mono.Math.xml
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\obj\Debug\CMAS_Admin.csproj.AssemblyReference.cache
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\obj\Debug\CMAS_Admin.csproj.CoreCompileInputs.cache
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\obj\Debug\CMAS_Admin.csproj.CopyComplete
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\obj\Debug\CallawayWeb.dll
+C:\_Callaway\_Traza Global\Nadia\CMAS_Admin\CMAS_Admin\obj\Debug\CallawayWeb.pdb
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\CallawayWeb.dll.config
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\CallawayWeb.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\CallawayWeb.pdb
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\AjaxControlToolkit.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\AspNet.ScriptManager.jQuery.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\dotnetCHARTING.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.Core.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\EntityFramework.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\System.Web.Providers.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\Org.Mentalis.Security.Cryptography.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\Mono.Math.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\EntityFramework.xml
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.Core.xml
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\Org.Mentalis.Security.Cryptography.xml
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\bin\Mono.Math.xml
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\obj\Debug\CMAS_Admin.csproj.AssemblyReference.cache
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\obj\Debug\CMAS_Admin.csproj.CoreCompileInputs.cache
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\obj\Debug\CMAS_Admin.csproj.Up2Date
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\obj\Debug\CallawayWeb.dll
+C:\Users\axel.ortiz\Documents\projectos\CMAS_Admin\CMAS_Admin\obj\Debug\CallawayWeb.pdb
+D:\CMAS_Admin\CMAS_Admin\bin\CallawayWeb.dll.config
+D:\CMAS_Admin\CMAS_Admin\bin\CallawayWeb.dll
+D:\CMAS_Admin\CMAS_Admin\bin\CallawayWeb.pdb
+D:\CMAS_Admin\CMAS_Admin\bin\AjaxControlToolkit.dll
+D:\CMAS_Admin\CMAS_Admin\bin\AspNet.ScriptManager.jQuery.dll
+D:\CMAS_Admin\CMAS_Admin\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+D:\CMAS_Admin\CMAS_Admin\bin\dotnetCHARTING.dll
+D:\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.AspNet.dll
+D:\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.Core.dll
+D:\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OAuth.Consumer.dll
+D:\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OAuth.dll
+D:\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OpenId.dll
+D:\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+D:\CMAS_Admin\CMAS_Admin\bin\EntityFramework.dll
+D:\CMAS_Admin\CMAS_Admin\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+D:\CMAS_Admin\CMAS_Admin\bin\Microsoft.Web.Infrastructure.dll
+D:\CMAS_Admin\CMAS_Admin\bin\System.Web.Providers.dll
+D:\CMAS_Admin\CMAS_Admin\bin\Org.Mentalis.Security.Cryptography.dll
+D:\CMAS_Admin\CMAS_Admin\bin\Mono.Math.dll
+D:\CMAS_Admin\CMAS_Admin\bin\EntityFramework.xml
+D:\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.Core.xml
+D:\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OAuth.xml
+D:\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OAuth.Consumer.xml
+D:\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OpenId.xml
+D:\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+D:\CMAS_Admin\CMAS_Admin\bin\DotNetOpenAuth.AspNet.xml
+D:\CMAS_Admin\CMAS_Admin\bin\Org.Mentalis.Security.Cryptography.xml
+D:\CMAS_Admin\CMAS_Admin\bin\Mono.Math.xml
+D:\CMAS_Admin\CMAS_Admin\obj\Debug\CMAS_Admin.csproj.AssemblyReference.cache
+D:\CMAS_Admin\CMAS_Admin\obj\Debug\CMAS_Admin.csproj.CoreCompileInputs.cache
+D:\CMAS_Admin\CMAS_Admin\obj\Debug\CallawayWeb.dll
+D:\CMAS_Admin\CMAS_Admin\obj\Debug\CallawayWeb.pdb
+D:\CMAS_Admin\CMAS_Admin\obj\Debug\CMAS_Admin.csproj.Up2Date
+D:\CMAS_Admin - Copy\CMAS_Admin\obj\Debug\CMAS_Admin.csproj.AssemblyReference.cache
+D:\CMAS_Admin - Copy\CMAS_Admin\obj\Debug\CMAS_Admin.csproj.CoreCompileInputs.cache
+D:\CMAS_Admin - Copy\CMAS_Admin\obj\Debug\CallawayWeb.dll
+D:\CMAS_Admin - Copy\CMAS_Admin\obj\Debug\CallawayWeb.pdb

@@ -1,0 +1,72 @@
+﻿@ Master Language="C#" AutoEventWireup="true" CodeBehind="Produccion.master.cs" Inherits="CallawayWeb.Produccion" %>
+<!DOCTYPE html>
+<html lang="en">
+<head id="Head1" runat="server">
+     
+    <title><%: Page.Title %> - Callaway</title>
+    <link href="~/Content/Site.css" rel="stylesheet" /> 
+    <link href="calicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <asp:PlaceHolder ID="PlaceHolder1" runat="server">        
+        <script src="<%: ResolveUrl("~/Scripts/modernizr-2.5.3.js") %>"></script>
+    </asp:PlaceHolder>
+    <meta name="viewport" content="width=device-width" />
+   <meta http-equiv="Page-Enter" content="revealTrans(Duration=1.0,Transition=3)"/>
+    <meta http-equiv="Page-Exit" content="revealTrans(Duration=2.0,Transition=0)"/>
+
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    </head>
+<body>
+    <form id="Form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+        <Scripts>
+            <asp:ScriptReference Name="jquery" />
+            <asp:ScriptReference Name="jquery.ui.combined" />
+        </Scripts>
+    </asp:ScriptManager>
+    <header>
+        <div class="content-wrapper">
+                 <ul id="menu">
+                        <li><a id="A2" runat="server" href="~/">Home</a></li>
+                        <li><a id="A3" runat="server" href="~/Alta.aspx">Alta de partes</a></li>
+                        <li><a id="A4" runat="server" href="~/Reporte.aspx">Reporte</a></li>
+                       <%-- <li><a runat="server" href="Chart2.aspx">Gráfica Producción</a></li>
+                        <li><a runat="server" href="Chart3.aspx">Gráfica UPEH</a></li>--%>
+                        <li><a id="A1" runat="server" href="SetLinea.aspx">Producción</a></li>
+                        <li><a id="A5" runat="server" href="LineasActivas.aspx">Líneas Activas</a></li>
+                    </ul>
+            <div class="float-left">
+                <p class="site-title">
+                    <img class="float-left" src="Images/Callawaysmall.jpg"  style="position: absolute; top: 5; left: 0;" /></p>
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled" Visible="False">
+                        <AnonymousTemplate>
+                            <ul>
+                                <li><a id="registerLink" runat="server" href="~/Account/Register.aspx" visible="False">Register</a></li>
+                                <li><a id="loginLink" runat="server" href="~/Account/Login.aspx">Log in</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <p>
+                                Hello, <a id="A1" runat="server" class="username" href="~/Account/Manage.aspx" title="Manage your account">
+                                    <asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
+                                </a>!
+                                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
+                            </p>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </section>
+            </div>
+            <br />
+        </div>
+    </header>
+    <div id="body">
+        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+        <section>
+            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+        </section>
+    </div>
+    </form>
+</body>
+</html>
