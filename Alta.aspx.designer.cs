@@ -501,6 +501,15 @@ namespace CallawayWeb
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator19;
 
         /// <summary>
+        /// tdImagen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell tdImagen;
+
+        /// <summary>
         /// FileUploadImagen control.
         /// </summary>
         /// <remarks>
@@ -517,6 +526,24 @@ namespace CallawayWeb
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LbMensajeImagen;
+
+        /// <summary>
+        /// ImgParte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImgParte;
+
+        /// <summary>
+        /// LblNoImagen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblNoImagen;
 
         /// <summary>
         /// BtGuardaParte control.

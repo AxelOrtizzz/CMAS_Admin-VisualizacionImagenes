@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.Sql;
+using System.IO;
+using System.Diagnostics;
+using System.Web.Services;
 
 
 namespace CallawayWeb
@@ -14,15 +17,74 @@ namespace CallawayWeb
     public partial class About : Page
     {
         static string ViejaCabeza = "";
-        static string ViejoGenero = "";
+        static string ViejoGenero = ""; 
+        static string sharedFolderPath = @"\\cgmfs402\Tracebility\Images\";
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            
+
             if (!IsPostBack)
             {
                 CargaCombosPartes();
                 RequiredFieldValidator20.Enabled = false;
+                BtGuardaParte.Visible = false;
+                FileUploadImagen.Visible = true;
+                LbMensajeImagen.Visible = true;
+                tdImagen.Visible = true;
+
+                
+
             }
         }
+
+        protected void MostrarMensaje(string mensaje, bool esExito)
+        {
+            string tipoMensaje = esExito ? "success" : "error";
+
+            string script = $@"
+                var mensajeElemento = document.getElementById('mensajes');
+                mensajeElemento.innerText = '{mensaje}';
+                mensajeElemento.style.color = '{(esExito ? "green" : "red")}';
+                mensajeElemento.style.display = 'block';
+
+                setTimeout(function() {{
+                    mensajeElemento.style.display = 'none';
+                    }}, 5000);
+                ";
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarMensaje", script, true);
+        }
+
+
+
+
+        [WebMethod]
+        public static void EliminarImagenes()
+        {
+            try
+            {
+                string folderPath = System.Web.HttpContext.Current.Server.MapPath("~/Content/imgServidor/");
+
+                if (Directory.Exists(folderPath))
+                {
+                    string[] archivos = Directory.GetFiles(folderPath, "*.*")
+                                                 .Where(s => s.EndsWith(".jpg") || s.EndsWith(".jpeg") || s.EndsWith(".png") || s.EndsWith(".gif"))
+                                                 .ToArray();
+
+                    foreach (string archivo in archivos)
+                    {
+                        File.Delete(archivo);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Puedes registrar el error si lo deseas
+                System.Diagnostics.Debug.WriteLine("Error eliminando imágenes: " + ex.Message);
+            }
+        }
+
 
         protected void BtnModelo_Click(object sender, EventArgs e)
         {
@@ -37,6 +99,7 @@ namespace CallawayWeb
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            // Hacer visibles/invisibles los formularios y botones correspondientes
             AltaModelo.Visible = false;
             AltaPartes.Visible = true;
             AltaLimites.Visible = false;
@@ -46,9 +109,32 @@ namespace CallawayWeb
             BtGuardaLimites.Visible = false;
             BtnBorrarLimite.Visible = true;
             BtnUpdateLimite.Visible = true;
-            //CargaCombosPartes();
+
+            // Limpiar los campos de texto en el formulario "Partes"
+            TxtParte.Text = "";
+            __TxtParte0.Text = ""; // Limpiar el campo de descripción
+            TxtTipoParte.Text = "";
+            TxGrip.Text = "";
+            TxLongitud.Text = "";
+
+            // Limpiar los DropDowns
+            DDCategoría0.SelectedIndex = 0; // Limpiar Dropdown de Categoría
+            DDModelos.SelectedIndex = 0;    // Limpiar Dropdown de Modelos
+            DDRL.SelectedIndex = 0;         // Limpiar Dropdown de Mano
+            DDMaterial.SelectedIndex = 0;   // Limpiar Dropdown de Material
+            DDDobla.SelectedIndex = 0;      // Limpiar Dropdown de Dobla
+            DDGenero.SelectedIndex = 0;     // Limpiar Dropdown de Género
+
+            // Limpiar la imagen
+            ImgParte.ImageUrl = ""; // Eliminar la imagen
+            ImgParte.Visible = false;
+
+            // Limpiar el label de errores
             LbErrors.Text = "";
+            ViewState.Clear();
         }
+
+
 
         protected void BtnLimites_Click(object sender, EventArgs e)
         {
@@ -90,33 +176,77 @@ namespace CallawayWeb
 
         protected void BtGuardaParte_Click(object sender, EventArgs e)
         {
-             LbErrors.Text = "";
+            LbErrors.Text = "";
             SQL sql = new SQL();
             sql.Base();
+
+            // Parámetros
             sql.AddParameter("@ParteId", TxtParte.Text);
             sql.AddParameter("@Parte_Desc", __TxtParte0.Text);
+
             if (string.Equals(DDCategoría0.SelectedValue, "SF"))
                 sql.AddParameter("@RL", TxLongitud.Text);
+            else if (string.Equals(DDCategoría0.SelectedValue, "GRIP"))
+                sql.AddParameter("@RL", TxGrip.Text);
             else
-                if (string.Equals(DDCategoría0.SelectedValue, "GRIP"))
-                    sql.AddParameter("@RL", TxGrip.Text);
-                else
-                    sql.AddParameter("@RL", DDRL.SelectedValue);
+                sql.AddParameter("@RL", DDRL.SelectedValue);
+
             sql.AddParameter("@Modelo_id", DDModelos.SelectedValue);
             sql.AddParameter("@Tipo", TxtTipoParte.Text);
             sql.AddParameter("@Material", DDMaterial.SelectedValue);
             sql.AddParameter("@Dobla", DDDobla.SelectedValue);
             sql.AddParameter("@Categoría", DDCategoría0.SelectedValue);
             sql.AddParameter("@Genero", DDGenero.SelectedValue);
+
+            // Guardar la imagen en la carpeta compartida
+            try
+            {
+                if (FileUploadImagen.HasFile && FileUploadImagen.FileContent.Length > 0)
+                {
+                    string fileExtension = Path.GetExtension(FileUploadImagen.FileName).ToLower();
+                    if (fileExtension != ".jpg" && fileExtension != ".jpeg" && fileExtension != ".png" && fileExtension != ".gif")
+                    {
+                        MostrarMensaje("Error: Solo se permiten imágenes en formato JPG, PNG o GIF.", false);
+                        return;
+                    }
+
+                    // Nombre del archivo basado en el ID de la parte
+                    string fileName = $"{TxtParte.Text}.jpg";
+                    string fullPath = Path.Combine(sharedFolderPath, fileName);
+
+                    // Guardar la imagen en la carpeta compartida
+                    FileUploadImagen.SaveAs(fullPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                MostrarMensaje("Error al guardar la imagen: " + ex.Message, false);
+                return;
+            }
+
+            // Ejecutar procedimiento almacenado
             sql.SpMat_SetPartes();
             LbErrors.Text = sql.Errors;
-            if (LbErrors.Text == "")
+
+            if (string.IsNullOrEmpty(LbErrors.Text))
             {
                 ClearPartes();
-                LbErrors.Text = "Parte guardada con éxito.";
+                MostrarMensaje("Parte guardada con éxito.", true);
                 CargaGridPartes();
             }
-         }
+            else
+            {
+                MostrarMensaje($"Error al guardar la parte: {LbErrors.Text}", false);
+            }
+
+        }
+
+
+
+
+
+
+
         protected void BtGuardaLimites_Click(object sender, EventArgs e)
         {
             int cont=0;
@@ -177,19 +307,27 @@ namespace CallawayWeb
         {
             DDCategoría0.SelectedIndex = 0;
             TxLongitud.Text = "";
-            //DDModelos.SelectedIndex = 0;
             TxtParte.Text = "";
             __TxtParte0.Text = "";
             DDRL.SelectedIndex = 0;
-            TxtTipoParte.Text="";
+            TxtTipoParte.Text = "";
             DDMaterial.SelectedIndex = 0;
             DDDobla.SelectedIndex = 0;
             LbErrorPartes.Text = "";
             TxGrip.Text = "";
             TxGrip.Visible = false;
-            //DDCategoría0.SelectedIndex = 0;
+
+            // Limpiar el campo de carga de archivos (FileUpload)
+            FileUploadImagen.Attributes.Clear();
+
+            // Ocultar la imagen de vista previa y mostrar el mensaje de "No hay imagen disponible"
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "resetImage",
+                "document.getElementById('imagenPrevia').style.display = 'none';" +
+                "document.getElementById('textoPlaceholder').textContent = 'No hay imagen disponible';" +
+                "document.getElementById('textoPlaceholder').style.display = 'block';", true);
         }
-       
+
+
         private void CargaCombosPartes()
         {
             CargaModelos();
@@ -268,21 +406,20 @@ namespace CallawayWeb
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
             LbErrors.Text = GridView1.SelectedIndex.ToString();
             DDCategoría0.SelectedValue = GridView1.SelectedRow.Cells[7].Text;
-            if(string.Equals(DDCategoría0.SelectedValue,"HD"))
+            if (string.Equals(DDCategoría0.SelectedValue, "HD"))
             {
                 if (GridView1.SelectedRow.Cells[3].Text == "&nbsp;" || GridView1.SelectedRow.Cells[3].Text == "  ")
                     DDModelos.SelectedIndex = 0;
                 else
                     DDModelos.SelectedValue = GridView1.SelectedRow.Cells[3].Text.Trim().ToUpper();
-            if (GridView1.SelectedRow.Cells[2].Text == "&nbsp;" || GridView1.SelectedRow.Cells[2].Text == "  ")
-                DDMaterial.SelectedIndex = 0;
-            else
-                DDRL.Text = GridView1.SelectedRow.Cells[2].Text.Trim().ToUpper();
-            TxtTipoParte.Text = GridView1.SelectedRow.Cells[4].Text.Trim();
-            DDDobla.SelectedValue = GridView1.SelectedRow.Cells[6].Text.Trim().ToUpper(); 
+                if (GridView1.SelectedRow.Cells[2].Text == "&nbsp;" || GridView1.SelectedRow.Cells[2].Text == "  ")
+                    DDMaterial.SelectedIndex = 0;
+                else
+                    DDRL.Text = GridView1.SelectedRow.Cells[2].Text.Trim().ToUpper();
+                TxtTipoParte.Text = GridView1.SelectedRow.Cells[4].Text.Trim();
+                DDDobla.SelectedValue = GridView1.SelectedRow.Cells[6].Text.Trim().ToUpper();
             }
             TxtParte.Text = GridView1.SelectedRow.Cells[0].Text.Trim();
             __TxtParte0.Text = GridView1.SelectedRow.Cells[1].Text.Trim();
@@ -311,7 +448,42 @@ namespace CallawayWeb
             BtnBorrarParte.Visible = true;
             IdentificaCatParte();
             LbErrorPartes.Text = "";
+
+            try
+            {
+                
+                // Nombre del archivo de imagen
+                string fileName = TxtParte.Text + ".jpg";
+                string sharedImagePath = Path.Combine(sharedFolderPath, fileName);
+
+                // Ruta de la carpeta en el proyecto (Content/imgServidor)
+                string projectImagePath = Server.MapPath("~/Content/imgServidor/" + fileName);
+
+                // Si la imagen ya existe en la carpeta del proyecto, eliminarla antes de copiar
+                if (File.Exists(projectImagePath))
+                {
+                    File.Delete(projectImagePath);
+                }
+
+                // Copiar la imagen desde la carpeta compartida
+                File.Copy(sharedImagePath, projectImagePath, true); // Sobrescribir si ya existe
+
+                // Generar la URL relativa con un parámetro para evitar caché
+                string imageUrl = $"/Content/imgServidor/{fileName}?cache_bust=" + DateTime.Now.Ticks.ToString();
+
+                // Actualizar la imagen en la página
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarImagen", $"mostrarImagen('{imageUrl}');", true);
+            }
+            catch (Exception ex)
+            {
+                LbErrors.Text = "Error al cargar la imagen: " + ex.Message;
+            }
+
+
+
         }
+
+
 
         protected void DDModelos0_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -460,8 +632,25 @@ namespace CallawayWeb
             sql.Base();
             sql.AddParameter("@Parte", TxtParte.Text);
             GridView1.DataSource = sql.SpWeb_GetPartePorParte();
-            GridView1.DataBind();      
+            GridView1.DataBind();
+
+            if (GridView1.Rows.Count > 0)
+            {
+                // Si la parte existe, muestra los campos
+                BtGuardaParte.Visible = false;
+                BtnUpdateParte.Visible = false;
+                BtnBorrarParte.Visible = false;
+            }
+            else
+            {
+                // Si no se encuentra la parte
+                LbMensajeImagen.Visible = true;
+                BtGuardaParte.Visible = true;
+            }
+            
+                
         }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
             __TxtParte0.Text = "";
@@ -473,8 +662,71 @@ namespace CallawayWeb
             BtGuardaParte.Visible = true;
             BtnUpdateParte.Visible = false;
             BtnBorrarParte.Visible = false;
+
+            // Recargar la grilla
             CargaGridPartesXParte();
+
+            // Limpiar mensajes previos
+            LbErrors.Text = "";
+
+            try
+            {
+                // Verificar que se haya ingresado una parte
+                if (string.IsNullOrWhiteSpace(TxtParte.Text))
+                {
+                    MostrarMensaje("Por favor, ingrese una parte antes de buscar.", false);
+                    return;
+                }
+
+                // Nombre del archivo basado en la parte ingresada
+                string fileName = TxtParte.Text.Trim() + ".jpg";
+
+                // Ruta de la carpeta compartida
+                string sharedImagePath = Path.Combine(sharedFolderPath, fileName);
+
+                // Ruta de la carpeta local donde se guardará la imagen
+                string localFolderPath = Server.MapPath("~/Content/imgServidor/");
+                string localImagePath = Path.Combine(localFolderPath, fileName);
+
+                // Verificar si la imagen existe en la carpeta compartida
+                if (!File.Exists(sharedImagePath))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarMensaje",
+                        "document.getElementById('imagenPrevia').style.display = 'none';" +
+                        "document.getElementById('textoPlaceholder').innerText = 'No hay imagen disponible';", true);
+
+                    MostrarMensaje("No hay imagen disponible.", false);
+                    return;
+                }
+
+                // Si la imagen ya existe en la carpeta local, eliminarla antes de copiar
+                if (File.Exists(localImagePath))
+                {
+                    File.Delete(localImagePath);
+                }
+
+                // Copiar la imagen desde la carpeta compartida
+                File.Copy(sharedImagePath, localImagePath, true);
+
+                // Generar la URL relativa con un parámetro de caché para evitar que el navegador utilice la versión en caché
+                string imageUrl = $"Content/imgServidor/{fileName}?cache_bust=" + DateTime.Now.Ticks.ToString();
+
+                // Actualizar la imagen en la página con JavaScript
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarImagen",
+                    $"document.getElementById('imagenPrevia').src = '{imageUrl}';" +
+                    "document.getElementById('imagenPrevia').style.display = 'block';" +
+                    "document.getElementById('textoPlaceholder').innerText = '';", true);
+
+            }
+            catch (Exception ex)
+            {
+                MostrarMensaje("Error al buscar la imagen: " + ex.Message, false);
+            }
+
         }
+
+
+
 
         protected void TxtParte_TextChanged(object sender, EventArgs e)
         {
@@ -485,49 +737,156 @@ namespace CallawayWeb
         {
             SQL sql = new SQL();
             sql.Base();
-            //LbErrors.Text = GridView1.SelectedRow.Cells[0].Text;
+
+            // Actualiza los parámetros de los campos del formulario
             sql.AddParameter("@parte", TxtParte.Text);
             sql.AddParameter("@desc", __TxtParte0.Text);
+
             if (string.Equals(DDCategoría0.SelectedValue, "SF"))
                 sql.AddParameter("@rl", TxLongitud.Text);
+            else if (string.Equals(DDCategoría0.SelectedValue, "GRIP"))
+                sql.AddParameter("@RL", TxGrip.Text);
             else
-                if (string.Equals(DDCategoría0.SelectedValue, "GRIP"))
-                    sql.AddParameter("@RL", TxGrip.Text);
-                else
-                    sql.AddParameter("@rl", DDRL.SelectedValue);
-            //sql.AddParameter("@rl", DDRL.SelectedValue);
+                sql.AddParameter("@rl", DDRL.SelectedValue);
+
             sql.AddParameter("@modelo", DDModelos.SelectedValue);
             sql.AddParameter("@tipo", TxtTipoParte.Text);
-            sql.AddParameter("@material",DDMaterial.Text );
-            sql.AddParameter("@dobla", DDDobla.Text );
+            sql.AddParameter("@material", DDMaterial.Text);
+            sql.AddParameter("@dobla", DDDobla.Text);
             sql.AddParameter("@categoria", DDCategoría0.SelectedValue);
-            sql.AddParameter("@genero", DDGenero.SelectedValue); 
+            sql.AddParameter("@genero", DDGenero.SelectedValue);
+
             sql.SpWeb_UpdtPartes();
-           
-            CargaGridPartes();
-            BtGuardaParte.Visible = true;
-            BtnUpdateParte.Visible = false;
-            BtnBorrarParte.Visible = false; 
-            ClearPartes();
+
+            if (FileUploadImagen.HasFile)
+            {
+                try
+                {
+                    string fileName = TxtParte.Text + ".jpg";
+                    string imagePath = Path.Combine(@"\\cgmfs402\Tracebility\Images\", fileName);
+                    string backupPath = Path.Combine(@"\\cgmfs402\Tracebility\Images\ImagesUpd\", fileName);
+
+                    ClearPartes();
+
+                    // Verifica si la carpeta es accesible
+                    if (!Directory.Exists(@"\\cgmfs402\Tracebility\Images\"))
+                    {
+                        MostrarMensaje("La carpeta de imágenes no está disponible.", false);
+                        return;
+                    }
+
+                    try
+                    {
+                        // Intenta eliminar la imagen existente
+                        if (File.Exists(imagePath))
+                        {
+                            File.Delete(imagePath);
+                        }
+
+                        // Guarda la nueva imagen en la carpeta principal
+                        FileUploadImagen.SaveAs(imagePath);
+
+                        // Verifica si la imagen se guardó correctamente
+                        if (File.Exists(imagePath))
+                        {
+                            MostrarMensaje("Imagen actualizada correctamente.", true);
+                            ImgParte.ImageUrl = imagePath + "?cache_bust=" + DateTime.Now.Ticks.ToString();
+                        }
+                        else
+                        {
+                            MostrarMensaje("No se pudo guardar la imagen en la ruta principal.", false);
+                        }
+                    }
+                    catch (IOException)
+                    {
+                        // Si la imagen está en uso, guárdala en la carpeta temporal
+                        FileUploadImagen.SaveAs(backupPath);
+
+                        if (File.Exists(backupPath))
+                        {
+                            MostrarMensaje("La imagen está en uso en producción. Se guardó temporalmente y se actualizará más tarde.", true);
+                        }
+                        else
+                        {
+                            MostrarMensaje("Error al guardar la imagen en la carpeta temporal.", false);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MostrarMensaje("Error al guardar la imagen: " + ex.Message, false);
+                }
+            }
+            else
+            {
+                ClearPartes();
+            }
         }
+
+        private void CargarImagen()
+        {
+            string fileName = $"{TxtParte.Text}.jpg"; // número de parte
+            string filePath = $"\\\\cgmxfile400\\Tracebility\\Images\\{fileName}"; // Ruta de la carpeta compartida
+
+            if (File.Exists(filePath))
+            {
+                ImgParte.ImageUrl = $"~/Content/imgServidor/{fileName}"; // URL relativa para mostrar en el navegador
+            }
+            else
+            {
+                ImgParte.ImageUrl = "~/Content/imgServidor/no-imagen.png"; // Imagen de "No disponible"
+            }
+        }
+
 
         protected void BtnBorrarParte_Click(object sender, EventArgs e)
         {
-                       SQL sql = new SQL();
-                       sql.Base();
-                       LbErrors.Text = GridView1.SelectedRow.Cells[0].Text;
-                       sql.AddParameter("@Parte", GridView1.SelectedRow.Cells[0].Text);
-                       sql.SpWeb_DelParte();
-                       LbErrorPartes.Text = sql.Errors;
-                       if (string.Compare(LbErrorPartes.Text, "") == 0)
-                       {
-                           CargaGridPartes();
-                           BtGuardaParte.Visible = true;
-                           BtnUpdateParte.Visible = false;
-                           BtnBorrarParte.Visible = false;
-                           ClearPartes();
-                       }         
+            SQL sql = new SQL();
+            sql.Base();
+            LbErrors.Text = GridView1.SelectedRow.Cells[0].Text;
+
+            // Obtenemos el número de parte desde la fila seleccionada
+            string parte = GridView1.SelectedRow.Cells[0].Text;
+
+            // Primero eliminamos la parte de la base de datos
+            sql.AddParameter("@Parte", parte);
+            sql.SpWeb_DelParte();
+
+            // Verificar si hubo algún error
+            LbErrorPartes.Text = sql.Errors;
+
+            if (string.Compare(LbErrorPartes.Text, "") == 0)
+            {
+                // Recargar la grilla de partes
+                CargaGridPartes();
+
+                // Ocultar botones según sea necesario
+                BtGuardaParte.Visible = true;
+                BtnUpdateParte.Visible = false;
+                BtnBorrarParte.Visible = false;
+
+                // Limpiar los campos
+                ClearPartes();
+
+                //// Ruta de la imagen a eliminar
+                //string rutaImagen = $@"C:\Users\bayer\Pictures\imgServidor\{parte}.jpg"; // Ajusta según la ruta de tu servidor
+
+                //// Verificar si la imagen existe
+                //if (File.Exists(rutaImagen))
+                //{
+                //    try
+                //    {
+                //        // Eliminar la imagen
+                //        File.Delete(rutaImagen);
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        LbErrorPartes.Text = "Error al eliminar la imagen: " + ex.Message;
+                //    }
+                //}
+            }
         }
+
 
         protected void DDOperaciones_SelectedIndexChanged(object sender, EventArgs e)
         {

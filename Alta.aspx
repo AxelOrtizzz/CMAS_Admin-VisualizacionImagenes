@@ -62,7 +62,7 @@
                             <tr>
                                 <td class="auto-style26">Modelo: </td>
                                 <td class="auto-style27" colspan="1">
-                                    <asp:TextBox ID="TxtModelo" runat="server" Height="14px" CssClass="TextBoxTabla" Width="254px"></asp:TextBox>
+                                    <asp:TextBox ID="TxtModelo" runat="server" CssClass="TextBoxTabla" Height="14px" Width="254px"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TxtModelo" ErrorMessage="Requiere definir el nombre del modelo." ValidationGroup="Grupo1">*</asp:RequiredFieldValidator>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="TxtModelo" ErrorMessage="Indique el modelo" ValidationGroup="modelo">*</asp:RequiredFieldValidator>
                                     <asp:Button ID="Button6" runat="server" OnClick="Button6_Click" Text="Buscar" ValidationGroup="modelo" />
@@ -118,162 +118,168 @@
                         </table>
                     </asp:Panel>
 
-                    //Inicio Alta Partes//
 
                     <asp:Panel ID="AltaPartes" runat="server" Visible="False" DefaultButton="BtGuardaParte">
-                        <table class="auto-style2">
-                            <tr>
-                                <td colspan="2" class="auto-style12"><span class="TituloTabla">Alta de Partes</span></td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style23">Categoría:</td>
-                                <td style="text-align: left" class="auto-style24">
-                                    <asp:DropDownList ID="DDCategoría0" runat="server" Height="19px" OnSelectedIndexChanged="DDCategoría0_SelectedIndexChanged" style="margin-left: 0px" Width="140px" AutoPostBack="True">
-                                        <asp:ListItem></asp:ListItem>
-                                        <asp:ListItem>GRIP</asp:ListItem>
-                                        <asp:ListItem>HD</asp:ListItem>
-                                        <asp:ListItem>SF</asp:ListItem>
-                                        <asp:ListItem Value="HC">HC</asp:ListItem>
-                                    </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="DDCategoría0" ErrorMessage="Seleccione una categoría." InitialValue="" ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style23">Modelo:</td>
-                                <td class="auto-style24" style="text-align: left">
-                                    <asp:DropDownList ID="DDModelos" runat="server" AppendDataBoundItems="True" AutoPostBack="True" Height="19px" OnSelectedIndexChanged="DDModelos_SelectedIndexChanged" style="margin-left: 0px" Width="140px">
-                                        <asp:ListItem></asp:ListItem>
-                                    </asp:DropDownList>
-                                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="DDModelos" ErrorMessage="Seleccione un Modelo" InitialValue="" ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style15">Parte:</td>
-                                <td style="text-align: left">
-                                    <asp:TextBox ID="TxtParte" runat="server" CssClass="TextBoxTable" MaxLength="20" Height="19px" OnTextChanged="TxtParte_TextChanged"></asp:TextBox>
-                                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Buscar" />
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TxtParte" ErrorMessage="Introduzca el nombre de la parte." ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style15">Descripción:</td>
-                                <td style="text-align: left">
-                                    <asp:TextBox ID="__TxtParte0" runat="server" CssClass="TextBoxTable" ValidateRequestMode="Disabled" MaxLength="50" Height="19px"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="__TxtParte0" ErrorMessage="Introduzca una descripción." ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style15">
-                                    <asp:Label ID="LbMano" runat="server" Text="Mano"></asp:Label>
-                                </td>
-                                <td style="text-align: left">
-                                    <asp:DropDownList ID="DDRL" runat="server" Height="19px" style="margin-left: 0px" Width="140px">
-                                        <asp:ListItem></asp:ListItem>
-                                        <asp:ListItem>LH</asp:ListItem>
-                                        <asp:ListItem>RH</asp:ListItem>
-                                    </asp:DropDownList>
-                                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="DDRL" ErrorMessage="Seleccione si es RH o LH" InitialValue="" ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
-                                    <asp:TextBox ID="TxGrip" runat="server" MaxLength="5" Visible="False"></asp:TextBox>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style15">
-                                    <asp:Label ID="LbLongitud" runat="server" Text="Longitud:" Visible="False"></asp:Label>
-                                </td>
-                                <td style="text-align: left">
-                                    <asp:TextBox ID="TxLongitud" runat="server" Visible="False"></asp:TextBox>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style13">Número de Cabeza:</td>
-                                <td class="auto-style14" style="text-align: left">
-                                    <asp:TextBox ID="TxtTipoParte" runat="server" CssClass="TextBoxTable" MaxLength="8" Height="19px"></asp:TextBox>
-                                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="__TxtParte0" ErrorMessage="Defina el tipo de material." ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style16">Material:</td>
-                                <td class="auto-style17" style="text-align: left">
-                                    <asp:DropDownList ID="DDMaterial" runat="server" Height="19px" style="margin-left: 0px" Width="140px" AppendDataBoundItems="True">
-                                        <asp:ListItem></asp:ListItem>
-                                    </asp:DropDownList>
-                                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="DDMaterial" ErrorMessage="Seleccione el material." InitialValue="" ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style15">Dobla:</td>
-                                <td style="text-align: left">
-                                    <asp:DropDownList ID="DDDobla" runat="server" Height="19px" style="margin-left: 0px" Width="140px">
-                                        <asp:ListItem></asp:ListItem>
-                                        <asp:ListItem Value="N">No</asp:ListItem>
-                                        <asp:ListItem Value="Y">Si</asp:ListItem>
-                                    </asp:DropDownList>
-                                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="DDDobla" ErrorMessage="Seleccione si tiene doblez o no." InitialValue="" ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style15">Género:</td>
-                                <td style="text-align: left">
-                                    <asp:DropDownList ID="DDGenero" runat="server" AppendDataBoundItems="True">
-                                        <asp:ListItem></asp:ListItem>
-                                        <asp:ListItem>W</asp:ListItem>
-                                        <asp:ListItem>M</asp:ListItem>
-                                    </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="DDGenero" ErrorMessage="Indique el género" ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style15">Imagen:</td>
-                                <td style="text-align: left">
-                                    <asp:FileUpload ID="FileUploadImagen" runat="server" />
-                                    //
-                                    <asp:Label ID="LbMensajeImagen" runat="server" ForeColor="Red"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="auto-style12">
+                        <span class="TituloTabla">Alta de Partes</span>
+                        <div id="mensajes" style="display:none; padding:10px; border-radius:5px;"></div>
+                        <div style="display: flex;">
+                            <div style="flex: 1; width: 65%;">
+                                <table class="style2" >
+                                    <tr>
+                                        <td class="auto-style23">Categoría:</td>
+                                        <td style="text-align: left" class="auto-style24">
+                                            <asp:DropDownList ID="DDCategoría0" runat="server" Height="19px" OnSelectedIndexChanged="DDCategoría0_SelectedIndexChanged" style="margin-left: 0px" Width="140px" AutoPostBack="True">
+                                                <asp:ListItem></asp:ListItem>
+                                                <asp:ListItem>GRIP</asp:ListItem>
+                                                <asp:ListItem>HD</asp:ListItem>
+                                                <asp:ListItem>SF</asp:ListItem>
+                                                <asp:ListItem Value="HC">HC</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="DDCategoría0" ErrorMessage="Seleccione una categoría." InitialValue="" ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style23">Modelo:</td>
+                                        <td class="auto-style24" style="text-align: left">
+                                            <asp:DropDownList ID="DDModelos" runat="server" AppendDataBoundItems="True" AutoPostBack="True" Height="19px" OnSelectedIndexChanged="DDModelos_SelectedIndexChanged" style="margin-left: 0px" Width="140px">
+                                                <asp:ListItem></asp:ListItem>
+                                            </asp:DropDownList>
+                                            &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="DDModelos" ErrorMessage="Seleccione un Modelo" InitialValue="" ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style15">Parte:</td>
+                                        <td style="text-align: left">
+                                            <asp:TextBox ID="TxtParte" runat="server" CssClass="TextBoxTable" MaxLength="20" Height="19px" OnTextChanged="TxtParte_TextChanged"></asp:TextBox>
+                                            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Buscar" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TxtParte" ErrorMessage="Introduzca el nombre de la parte." ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style15">Descripción:</td>
+                                        <td style="text-align: left">
+                                            <asp:TextBox ID="__TxtParte0" runat="server" CssClass="TextBoxTable" ValidateRequestMode="Disabled" MaxLength="50" Height="19px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="__TxtParte0" ErrorMessage="Introduzca una descripción." ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style15">
+                                            <asp:Label ID="LbMano" runat="server" Text="Mano"></asp:Label>
+                                        </td>
+                                        <td style="text-align: left">
+                                            <asp:DropDownList ID="DDRL" runat="server" Height="19px" style="margin-left: 0px" Width="140px">
+                                                <asp:ListItem></asp:ListItem>
+                                                <asp:ListItem>LH</asp:ListItem>
+                                                <asp:ListItem>RH</asp:ListItem>
+                                            </asp:DropDownList>
+                                            &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="DDRL" ErrorMessage="Seleccione si es RH o LH" InitialValue="" ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
+                                            <asp:TextBox ID="TxGrip" runat="server" MaxLength="5" Visible="False"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style15">
+                                            <asp:Label ID="LbLongitud" runat="server" Text="Longitud:" Visible="False"></asp:Label>
+                                        </td>
+                                        <td style="text-align: left">
+                                            <asp:TextBox ID="TxLongitud" runat="server" Visible="False"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style13">Número de Cabeza:</td>
+                                        <td class="auto-style14" style="text-align: left">
+                                            <asp:TextBox ID="TxtTipoParte" runat="server" CssClass="TextBoxTable" MaxLength="8" Height="19px"></asp:TextBox>
+                                            &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="__TxtParte0" ErrorMessage="Defina el tipo de material." ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style16">Material:</td>
+                                        <td class="auto-style17" style="text-align: left">
+                                            <asp:DropDownList ID="DDMaterial" runat="server" Height="19px" style="margin-left: 0px" Width="140px" AppendDataBoundItems="True">
+                                                <asp:ListItem></asp:ListItem>
+                                            </asp:DropDownList>
+                                            &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="DDMaterial" ErrorMessage="Seleccione el material." InitialValue="" ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style15">Dobla:</td>
+                                        <td style="text-align: left">
+                                            <asp:DropDownList ID="DDDobla" runat="server" Height="19px" style="margin-left: 0px" Width="140px">
+                                                <asp:ListItem></asp:ListItem>
+                                                <asp:ListItem Value="N">No</asp:ListItem>
+                                                <asp:ListItem Value="Y">Si</asp:ListItem>
+                                            </asp:DropDownList>
+                                            &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="DDDobla" ErrorMessage="Seleccione si tiene doblez o no." InitialValue="" ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style15">Género:</td>
+                                        <td style="text-align: left">
+                                            <asp:DropDownList ID="DDGenero" runat="server" AppendDataBoundItems="True">
+                                                <asp:ListItem></asp:ListItem>
+                                                <asp:ListItem>W</asp:ListItem>
+                                                <asp:ListItem>M</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="DDGenero" ErrorMessage="Indique el género" ValidationGroup="Grupo2">*</asp:RequiredFieldValidator>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id="tdImagen" runat="server" class="auto-style15">Imagen:</td>
+                                        <td style="text-align: left">
+                                            <asp:FileUpload ID="FileUploadImagen" runat="server" onchange="validarImagen(this);" />
+                                            <asp:Label ID="LbMensajeImagen" runat="server" ForeColor="Red"></asp:Label>
+                                            <br />
+                                            <asp:Image ID="ImgParte" runat="server" Width="200px" Height="200px" Visible="false" />
+                                            <asp:Label ID="LblNoImagen" runat="server" ForeColor="Red" Text="No hay imagen disponible" Visible="false"></asp:Label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div style="flex: 0 0 auto; width: 40%; display: flex; justify-content: flex-start; align-items: flex-start;"> 
+                                <img id="imagenPrevia" class="style-img" src="#" alt="" style="width: 400px; height: 200px; display: none;">
+                                <p id="textoPlaceholder">Vista previa de la imagen</p>
+                            </div>
+                        </div>                      
+                        <table colspan="2" class="auto-style12">
                                     <asp:Button ID="BtGuardaParte" runat="server" Text="Guardar" OnClick="BtGuardaParte_Click" ValidationGroup="Grupo2" />
                                     <asp:Button ID="BtnUpdateParte" runat="server" OnClick="BtnUpdateParte_Click" Text="Actualizar" Visible="False" />
                                     <asp:Button ID="BtnBorrarParte" runat="server" Text="Eliminar" OnClick="BtnBorrarParte_Click" Visible="False" />
-                                    <br />
-                                    <asp:Label ID="LbErrorPartes" runat="server" ForeColor="Red"></asp:Label>
-                                    <br />
-                                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="3" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="100%">
-                                        <AlternatingRowStyle HorizontalAlign="Left" />
-                                        <Columns>
-                                            <asp:BoundField DataField="Parte" HeaderText="Parte" />
-                                            <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
-                                            <asp:BoundField DataField="RL" HeaderText="RL" />
-                                            <asp:BoundField DataField="Modelo" HeaderText="Modelo" />
-                                            <asp:BoundField DataField="Tipo" HeaderText="Número de Cabeza" />
-                                            <asp:BoundField DataField="Material" HeaderText="Material" />
-                                            <asp:BoundField DataField="Dobla" HeaderText="Dobla" />
-                                            <asp:BoundField DataField="Categoria" HeaderText="Categoría" />
-                                            <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
-                                            <asp:BoundField DataField="WM" HeaderText="Género" />
-                                            <asp:BoundField DataField="Parte" HeaderText="Imagen" />
-                                            <asp:CommandField SelectText="Seleccionar" ShowSelectButton="True" />
-                                        </Columns>
-                                        <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
-                                        <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                        <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Right" />
-                                        <RowStyle BackColor="#DEDFDE" ForeColor="Black" HorizontalAlign="Left" />
-                                        <SelectedRowStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
-                                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                        <SortedAscendingHeaderStyle BackColor="#594B9C" />
-                                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                        <SortedDescendingHeaderStyle BackColor="#33276A" />
-                                    </asp:GridView>
-                                    <br />
-                                </td>
-                            </tr>
-                        </table>
+                                    <caption>
+                                        <br />
+                                        <asp:Label ID="LbErrorPartes" runat="server" ForeColor="Red"></asp:Label>
+                                        <br />
+                                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="3" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="100%">
+                                            <AlternatingRowStyle HorizontalAlign="Left" />
+                                            <Columns>
+                                                <asp:BoundField DataField="Parte" HeaderText="Parte" />
+                                                <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
+                                                <asp:BoundField DataField="RL" HeaderText="RL" />
+                                                <asp:BoundField DataField="Modelo" HeaderText="Modelo" />
+                                                <asp:BoundField DataField="Tipo" HeaderText="Número de Cabeza" />
+                                                <asp:BoundField DataField="Material" HeaderText="Material" />
+                                                <asp:BoundField DataField="Dobla" HeaderText="Dobla" />
+                                                <asp:BoundField DataField="Categoria" HeaderText="Categoría" />
+                                                <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
+                                                <asp:BoundField DataField="WM" HeaderText="Género" />
+                                                <asp:BoundField DataField="Parte" HeaderText="Imagen" />
+                                                <asp:CommandField SelectText="Seleccionar" ShowSelectButton="True" />
+                                            </Columns>
+                                            <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
+                                            <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Right" />
+                                            <RowStyle BackColor="#DEDFDE" ForeColor="Black" HorizontalAlign="Left" />
+                                            <SelectedRowStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
+                                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                            <SortedAscendingHeaderStyle BackColor="#594B9C" />
+                                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                            <SortedDescendingHeaderStyle BackColor="#33276A" />
+                                        </asp:GridView>
+                                        <br />
+                                    </caption>
+                                </table>
                     </asp:Panel>
 
-                    //Terminacion Alta Partes//
-
                     <asp:Panel ID="AltaLimites" runat="server" Visible="False" DefaultButton="BtGuardaLimites">
-                        <table class="auto-style2">
+                        <table class="auto-style2" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td colspan="2" class="auto-style22">Alta de Límites</td>
                             </tr>
@@ -390,11 +396,109 @@
             </tr>
         </table>
     </article>
+    <script type="text/javascript">
+        function validarImagen(input) {
+            const file = input.files[0];
+            const labelError = document.getElementById('<%= LbMensajeImagen.ClientID %>');
+            const imagenPrevia = document.getElementById('imagenPrevia');
+            const textoPlaceholder = document.getElementById('textoPlaceholder');
 
-    </asp:Content>
+            if (file) {
+                const fileType = file.type;
+
+                if (fileType.startsWith('image/')) {
+                    labelError.textContent = '';
+
+                    const lector = new FileReader();
+                    lector.addEventListener('load', function () {
+                        // Mostrar la imagen seleccionada en la vista previa
+                        imagenPrevia.src = this.result; // Mostrar en <img>
+                        imagenPrevia.style.display = 'block'; // Hacer visible la imagen
+                        textoPlaceholder.style.display = 'none'; // Ocultar el texto de placeholder
+                    });
+
+                    lector.readAsDataURL(file);
+                } else {
+                    labelError.textContent = 'Error: Solo se permiten archivos de imagen.';
+                    input.value = '';
+                    imagenPrevia.src = '#';
+                    imagenPrevia.style.display = 'none';
+                    textoPlaceholder.style.display = 'block'; // Mostrar el texto de placeholder
+
+                    setTimeout(function () {
+                        {
+                            labelError.style.display = 'none';
+                            
+                        }
+                    }, 5000);
+                }
+            } else {
+                labelError.textContent = '';
+                imagenPrevia.src = '#';
+                imagenPrevia.style.display = 'none';
+                textoPlaceholder.style.display = 'block'; // Mostrar el texto de placeholder
+            }
+        }
+
+        function mostrarImagen(imageUrl) {
+            var img = document.getElementById("imagenPrevia");
+            var placeholder = document.getElementById("textoPlaceholder");
+
+            // Convertir la ruta relativa a una ruta absoluta
+            var absoluteUrl = new URL(imageUrl, window.location.origin).href;
+
+            img.src = absoluteUrl; // Asignar la URL de la imagen
+            img.style.display = "block"; // Mostrar la imagen
+            placeholder.style.display = "none"; // Ocultar mensaje de error
+        }
+
+        function mostrarTexto() {
+            var img = document.getElementById("imagenPrevia");
+            var placeholder = document.getElementById("textoPlaceholder");
+
+            img.style.display = "none"; // Oculta la imagen
+            placeholder.textContent = "No hay imagen disponible"; // Mensaje de error
+            placeholder.style.display = "block"; // Mostrar mensaje de error
+        }
+
+
+
+    
+        setInterval(function () {
+            eliminarImagenes();
+        }, 30000); // Ejecuta cada 30 segundos
+
+        function eliminarImagenes() {
+            fetch('Alta.aspx/EliminarImagenes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})
+            })
+                .then(response => response.json())
+                .then(data => console.log("Imágenes eliminadas"))
+                .catch(error => console.error("Error eliminando imágenes", error));
+        }
+
+        
+
+
+    </script>
+
+
+
+</asp:Content>
 <asp:Content ID="Content1" runat="server" contentplaceholderid="HeadContent">
+    
     <style type="text/css">
+        td {
+            table-layout: auto;4
+        }
         .auto-style2 {
+            width: 100%;
+        }
+        table.style2 {
             width: 100%;
         }
                         
@@ -411,27 +515,31 @@
                 
         .auto-style12 {
             text-align: center;
+            width: 100%;
         }
+
         .auto-style13 {
-            width: 475px;
-            text-align: right;
-            height: 24px;
+            text-align: left;
+            width: 484px;
+            height: 16px;
         }
         .auto-style14 {
             height: 24px;
         }
         .auto-style15 {
-            width: 475px;
-            text-align: right;
+            text-align: left;
+            width: 484px;
+            height: 16px;
         }
         .auto-style16 {
-            width: 475px;
-            text-align: right;
-            height: 26px;
+            text-align: left;
+            width: 484px;
+            height: 16px;
         }
         .auto-style17 {
             height: 26px;
         }
+
                 
         .auto-style19 {
             text-align: left;
@@ -450,11 +558,12 @@
             text-align: center;
         }
         .auto-style23 {
-            width: 475px;
-            text-align: right;
+            text-align: left;
+            width: 484px;
             height: 16px;
         }
         .auto-style24 {
+            width: 75%;
             height: 16px;
         }
         
@@ -473,6 +582,11 @@
             text-align: left;
             height: 26px;
         }
+
+        .style-img{
+            width: 400px;
+            height: 200px;
+        }
         
         .auto-style28 {
             height: 34px;
@@ -485,3 +599,5 @@
         
     </style>
 </asp:Content>
+
+
